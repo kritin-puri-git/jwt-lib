@@ -15,16 +15,22 @@
 	<description>Reusable JWT generation, signing, validation, and token management library for Java applications.</description>
 	<url>https://github.com/kritin-puri-git/jwt-lib</url>
 	<licenses>
-		<license/>
+		<license>
+			<name>MIT License</name>
+			<url>https://opensource.org/license/mit</url>
+			<distribution>repo</distribution>
+		</license>
 	</licenses>
 	<developers>
-		<developer/>
+		<developer>
+			<name>Kritin Puri</name>
+			<url>https://github.com/kritin-puri-git</url>
+		</developer>
 	</developers>
 	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
+		<connection>scm:git:git://github.com/kritin-puri-git/jwt-lib.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/kritin-puri-git/jwt-lib.git</developerConnection>
+		<url>https://github.com/kritin-puri-git/jwt-lib</url>
 	</scm>
 	<properties>
 		<java.version>25</java.version>
@@ -59,10 +65,74 @@
 
 	<build>
 		<plugins>
+
+			<!-- Spring Boot -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
 			</plugin>
+
+			<!-- Sources -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Javadocs -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- GPG -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>3.2.8</version>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<executable>C:\Program Files\GnuPG\bin\gpg.exe</executable>
+				</configuration>
+			</plugin>
+
+			<!-- Maven Central -->
+			<plugin>
+				<groupId>org.sonatype.central</groupId>
+				<artifactId>central-publishing-maven-plugin</artifactId>
+				<version>0.11.0</version>
+				<extensions>true</extensions>
+				<configuration>
+					<publishingServerId>maven-central</publishingServerId>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
 
