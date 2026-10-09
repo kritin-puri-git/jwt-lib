@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>io.github.kritin-puri-git</groupId>
 	<artifactId>jwt-lib</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.2</version>
 	<name>JWT Lib</name>
 	<description>Reusable JWT generation, signing, validation, and token management library for Java applications.</description>
 	<url>https://github.com/kritin-puri-git/jwt-lib</url>
